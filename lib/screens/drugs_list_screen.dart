@@ -1,3 +1,4 @@
+import 'package:anabolic_compendium/widgets/main_actions.dart';
 import 'package:flutter/material.dart';
 
 import 'package:anabolic_compendium/models/drug_description.dart';
@@ -20,6 +21,11 @@ class DrugListScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(catTitle),
         centerTitle: true,
+        actions: mainActions(
+          context,
+          isSearch: true,
+          isFilter: true,
+        ),
       ),
       body: ListView.separated(
         separatorBuilder: (context, index) => Divider(

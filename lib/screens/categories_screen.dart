@@ -12,7 +12,11 @@ class CategoriesScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Anabolic Compendium'),
         centerTitle: true,
-        actions: mainActions(context),
+        actions: mainActions(
+          context,
+          isSearch: true,
+          isFilter: false,
+        ),
       ),
       body: ListView.builder(
           padding: EdgeInsets.symmetric(
