@@ -7,6 +7,9 @@ import 'package:anabolic_compendium/screens/search_screen.dart';
 import 'package:anabolic_compendium/screens/filter_screen.dart';
 
 List<Widget> mainActions(BuildContext ctx) {
+  bool isSearch;
+  bool isFilter;
+
   return [
     IconButton(
       icon: Icon(MdiIcons.magnify),

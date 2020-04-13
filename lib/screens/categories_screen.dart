@@ -21,21 +21,26 @@ class CategoriesScreen extends StatelessWidget {
           ),
           itemCount: catDataRU.length,
           itemBuilder: (context, int index) {
-            return Card(
-              child: ListTile(
-                title: Text(catDataRU[index].titlePrimary),
-                subtitle: Text(catDataRU[index].titleSecondary),
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DrugListScreen(
-                        currentList: catDataRU[index].dataSource,
-                        catTitle: catDataRU[index].titlePrimary,
-                      ),
-                    ),
-                  );
-                },
+            return Container(
+              height: 120,
+              child: Card(
+                child: Center(
+                  child: ListTile(
+                    title: Text(catDataRU[index].titlePrimary),
+                    subtitle: Text(catDataRU[index].titleSecondary),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DrugListScreen(
+                            currentList: catDataRU[index].dataSource,
+                            catTitle: catDataRU[index].titlePrimary,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
               ),
             );
           }),
