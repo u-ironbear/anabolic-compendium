@@ -40,6 +40,8 @@ class DrugDescription {
   final String drugMetabolites;
   final String androgenicAnabolicRatio;
 
+  //TODO: ввести новые переменные: drugRatings и ratioPriceEffectiveness
+
   // Период полувыведения указывается именно строкой,
   // например, 7 часов или 4 дня. При этом нужно помнить,
   // что свой период полувыведения есть и у чистого вещества,

@@ -4,6 +4,7 @@ import 'package:expandable/expandable.dart';
 ExpandableNotifier expoList({title, listName}) {
   return ExpandableNotifier(
     child: Card(
+      elevation: 0.5,
       child: ScrollOnExpand(
         scrollOnExpand: true,
         scrollOnCollapse: false,
@@ -46,6 +47,7 @@ ExpandableNotifier expoList({title, listName}) {
 ExpandableNotifier expoString({title, stringName}) {
   return ExpandableNotifier(
     child: Card(
+      elevation: 0.5,
       child: ScrollOnExpand(
         scrollOnExpand: true,
         scrollOnCollapse: false,
