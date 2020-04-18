@@ -18,12 +18,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Anabolic Compendium',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        primaryColor: Colors.blueGrey[600],
-        primaryColorDark: Colors.blueGrey[900],
-        primaryColorLight: Colors.blueGrey[300],
-        accentColor: Colors.amber[600],
-        // TODO Добавить шрифты, заодно прописав их в pubspec.yaml
+        primaryColor: Color(0xFF308882),
+        primaryColorDark: Color(0x2C7873),
+        primaryColorLight: Color(0xFF389990),
+        accentColor: Color(0xFFF7953F),
       ),
       home: CategoriesScreen(),
     );

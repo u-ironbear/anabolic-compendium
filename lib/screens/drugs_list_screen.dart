@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:anabolic_compendium/models/drug_description.dart';
 import 'package:anabolic_compendium/screens/drug_details_screen.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:anabolic_compendium/widgets/chat_button.dart';
 import 'package:anabolic_compendium/widgets/main_actions.dart';
 
@@ -17,6 +16,10 @@ class DrugListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Comparator<DrugDescription> drugNameComparator =
+        (a, b) => a.drugNameExact.compareTo(b.drugNameExact);
+    currentList.sort(drugNameComparator);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(catTitle),
@@ -30,15 +33,17 @@ class DrugListScreen extends StatelessWidget {
       body: ListView.separated(
         separatorBuilder: (context, index) => Divider(
           color: Colors.grey,
-          thickness: 0.3,
+          thickness: 0.2,
         ),
         padding: EdgeInsets.all(4.0),
         itemCount: currentList.length,
         itemBuilder: (context, int index) {
           return ListTile(
-            leading: Icon(currentList[index].drugIcon),
+            leading: Icon(
+              currentList[index].drugIcon,
+              color: Colors.amber[700],
+            ),
             title: Text(currentList[index].drugNameExact),
-            trailing: Icon(MdiIcons.bookmarkOutline),
             onTap: () {
               Navigator.push(
                 context,

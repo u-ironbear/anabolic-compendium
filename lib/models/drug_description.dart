@@ -9,6 +9,8 @@ import 'package:anabolic_compendium/models/drug_form_enum.dart';
 /// Индикаторы и торговые марки перенесены в отдельные классы.
 class DrugDescription {
   const DrugDescription({
+    this.drugRatings,
+    this.ratioPriceEffectiveness,
     @required this.drugNameExact,
     @required this.drugRForm,
     @required this.drugNameAliases,
@@ -31,6 +33,20 @@ class DrugDescription {
     this.detectionTime = 'Нет данных',
   });
 
+  /// Рейтинги: нигде не отображаются; нужны для фильтров
+  // Рейтинги вводятся целыми числами:
+  //  0 = полное отсутствие
+  //  1 = слабый эффект
+  //  2 = эффект средней силы
+  //  3 = выраженный эффект
+  //  4 = очень сильный эффект
+  // Расположены в таком порядке: масса / сила / выносливость / подготовка
+  final List<int> drugRatings;
+
+  // Соотношение цена / эффективность также определяется по 5-бальной шкале.
+  // Отображается звездочками, так что, быть может, стоит числа заменить изображениями.
+  final int ratioPriceEffectiveness;
+
   /// Свойства, которые отображаются во вкладке «Описание»
   final String drugNameExact;
   final DrugForm drugRForm;
@@ -39,8 +55,6 @@ class DrugDescription {
   final String drugAnalogue;
   final String drugMetabolites;
   final String androgenicAnabolicRatio;
-
-  //TODO: ввести новые переменные: drugRatings и ratioPriceEffectiveness
 
   // Период полувыведения указывается именно строкой,
   // например, 7 часов или 4 дня. При этом нужно помнить,

@@ -1,7 +1,7 @@
 import 'package:anabolic_compendium/models/drug_description.dart';
 import 'package:anabolic_compendium/models/drug_form_enum.dart';
 
-const kCLASSIC_AAS_RU = const [
+List<DrugDescription> aasListRU = [
   DrugDescription(
     drugParent: 'Дигидротестостерон',
     drugNameExact: '1-тестостерон',

@@ -1,10 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:anabolic_compendium/data_ru/categories.dart';
-import 'package:anabolic_compendium/screens/drugs_list_screen.dart';
 import 'package:anabolic_compendium/widgets/chat_button.dart';
 import 'package:anabolic_compendium/widgets/main_actions.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:anabolic_compendium/widgets/category_card.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -24,43 +25,97 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           isFilter: false,
         ),
       ),
-      body: ListView.builder(
-          padding: EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 10.0,
-          ),
-          itemCount: catDataRU.length,
-          itemBuilder: (context, int index) {
-            return Container(
-              height: 80,
-              child: Card(
-                child: Center(
-                  child: ListTile(
-                    title: Text(catDataRU[index].titlePrimary),
-                    subtitle: Text(catDataRU[index].titleSecondary),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DrugListScreen(
-                            currentList: catDataRU[index].dataSource,
-                            catTitle: catDataRU[index].titlePrimary,
-                          ),
-                        ),
-                      );
-                    },
+      body: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: 12,
+                  left: 15,
+                ),
+                child: Text(
+                  'Категории',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            );
-          }),
+            ),
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: CategoryCard(
+                      cardCategory: catDataRU[0],
+                    ),
+                  ),
+                  Expanded(
+                    child: CategoryCard(
+                      cardCategory: catDataRU[1],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 5,
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                    child: CategoryCard(
+                      cardCategory: catDataRU[2],
+                    ),
+                  ),
+                  Expanded(
+                    child: CategoryCard(
+                      cardCategory: catDataRU[3],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              child: Container(
+                margin: EdgeInsets.only(
+                  top: 10,
+                  left: 10,
+                ),
+                child: Text(
+                  'Советы и подсказки',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 7,
+              child: Container(
+                margin: EdgeInsets.only(
+                  left: 10,
+                  right: 10,
+                  top: 10,
+                  bottom: 40,
+                ),
+                color: Colors.black12,
+              ),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: chatButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: CircularNotchedRectangle(),
         notchMargin: 4,
         child: Container(
-          height: 44,
+          height: 50,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             mainAxisSize: MainAxisSize.max,
@@ -72,7 +127,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 Icon(MdiIcons.textBoxMultipleOutline),
               ),
               SizedBox(
-                //TODO: заменить на относительную величину
+                // 25-30 — это примерный размер FAB для дюбого экрана.
                 width: 30,
               ),
               BottomBarIcon(

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final List dataSource;
-  final String titlePrimary;
-  final String titleSecondary;
-  final Color catColor;
-  final Image catImage;
-
   Category({
     @required this.dataSource,
     @required this.titlePrimary,
@@ -14,4 +8,10 @@ class Category {
     this.catColor = Colors.cyan,
     @required this.catImage,
   });
+
+  final List dataSource;
+  final String titlePrimary;
+  final String titleSecondary;
+  final Color catColor;
+  final Image catImage;
 }
