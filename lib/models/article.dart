@@ -8,7 +8,8 @@ class Article {
     this.articleAbstract,
     this.articleKeywords,
     @required this.articleIntro,
-    @required this.articleBody});
+    @required this.articleBody,
+  });
 
   final String articleTitle;
   final String articleSubtitle;
