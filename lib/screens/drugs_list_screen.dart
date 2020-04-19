@@ -9,10 +9,12 @@ class DrugListScreen extends StatelessWidget {
   DrugListScreen({
     @required this.currentList,
     @required this.catTitle,
+    @required this.catImage,
   });
 
   final List<DrugDescription> currentList;
   final String catTitle;
+  final Image catImage;
 
   @override
   Widget build(BuildContext context) {
@@ -21,41 +23,35 @@ class DrugListScreen extends StatelessWidget {
     currentList.sort(drugNameComparator);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(catTitle),
-        centerTitle: true,
-        actions: mainActions(
-          context,
-          isSearch: true,
-          isFilter: true,
-        ),
-      ),
-      body: ListView.separated(
-        separatorBuilder: (context, index) => Divider(
-          color: Colors.grey,
-          thickness: 0.2,
-        ),
-        padding: EdgeInsets.all(4.0),
-        itemCount: currentList.length,
-        itemBuilder: (context, int index) {
-          return ListTile(
-            leading: Icon(
-              currentList[index].drugIcon,
-              color: Colors.amber[700],
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 160,
+            floating: false,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text(catTitle),
+              centerTitle: true,
+              background: catImage,
             ),
-            title: Text(currentList[index].drugNameExact),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DrugDetailsScreen(
-                    currentDrug: currentList[index],
-                  ),
+            actions: mainActions(
+              context,
+              isSearch: true,
+              isFilter: true,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) => ListTile(
+                leading: Icon(
+                  IconData(currentList[index].drugIcon),
                 ),
-              );
-            },
-          );
-        },
+                title: Text(currentList[index].drugNameExact),
+                onTap: () {},
+              ),
+            ),
+          ),
+        ],
       ),
       floatingActionButton: chatButton(context),
     );

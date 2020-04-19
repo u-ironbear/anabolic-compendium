@@ -18,6 +18,7 @@ class CategoryCard extends StatelessWidget {
             builder: (context) => DrugListScreen(
               currentList: cardCategory.dataSource,
               catTitle: cardCategory.titlePrimary,
+              catImage: cardCategory.catImage,
             ),
           ),
         );
