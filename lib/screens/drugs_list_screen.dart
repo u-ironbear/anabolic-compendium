@@ -26,7 +26,7 @@ class DrugListScreen extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            expandedHeight: 160,
+            expandedHeight: 200,
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
@@ -44,11 +44,22 @@ class DrugListScreen extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => ListTile(
                 leading: Icon(
-                  IconData(currentList[index].drugIcon),
+                  currentList[index].drugIcon,
+                  color: Theme.of(context).accentColor,
                 ),
                 title: Text(currentList[index].drugNameExact),
-                onTap: () {},
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DrugDetailsScreen(
+                        currentDrug: currentList[index],
+                      ),
+                    ),
+                  );
+                },
               ),
+              childCount: currentList.length,
             ),
           ),
         ],
