@@ -7,7 +7,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 FloatingActionButton chatButton(BuildContext ctx) {
   return FloatingActionButton(
     child: Icon(
-      MdiIcons.forumOutline,
+      MdiIcons.chatOutline,
       color: Colors.white,
     ),
     onPressed: () {

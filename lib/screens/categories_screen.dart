@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:anabolic_compendium/data_ru/categories.dart';
 import 'package:anabolic_compendium/widgets/chat_button.dart';
 import 'package:anabolic_compendium/widgets/main_actions.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:anabolic_compendium/widgets/category_card.dart';
+import 'package:anabolic_compendium/widgets/main_bottom_bar.dart';
 
 class CategoriesScreen extends StatefulWidget {
   @override
@@ -111,49 +111,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       ),
       floatingActionButton: chatButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: CircularNotchedRectangle(),
-        notchMargin: 4,
-        child: Container(
-          height: 50,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              BottomBarIcon(
-                Icon(MdiIcons.bookOpenOutline),
-              ),
-              BottomBarIcon(
-                Icon(MdiIcons.textBoxMultipleOutline),
-              ),
-              SizedBox(
-                // 25-30 — это примерный размер FAB для дюбого экрана.
-                width: 30,
-              ),
-              BottomBarIcon(
-                Icon(MdiIcons.filterVariant),
-              ),
-              BottomBarIcon(
-                Icon(MdiIcons.cogOutline),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class BottomBarIcon extends StatelessWidget {
-  const BottomBarIcon(this.icon);
-  final Icon icon;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      icon: icon,
-      color: Colors.black38,
-      onPressed: () {},
+      bottomNavigationBar: MainBottomBar(),
     );
   }
 }

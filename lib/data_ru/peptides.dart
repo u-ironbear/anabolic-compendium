@@ -1,1 +1,3 @@
-const PEPTIDES_RU = const [];
+import 'package:anabolic_compendium/models/drug_description.dart';
+
+List<DrugDescription> peptidesRU = [];

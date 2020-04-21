@@ -4,6 +4,7 @@ import 'package:anabolic_compendium/models/drug_description.dart';
 import 'package:anabolic_compendium/screens/drug_details_screen.dart';
 import 'package:anabolic_compendium/widgets/chat_button.dart';
 import 'package:anabolic_compendium/widgets/main_actions.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class DrugListScreen extends StatelessWidget {
   DrugListScreen({
@@ -48,6 +49,7 @@ class DrugListScreen extends StatelessWidget {
                   color: Theme.of(context).accentColor,
                 ),
                 title: Text(currentList[index].drugNameExact),
+                trailing: Icon(MdiIcons.bookmarkOutline),
                 onTap: () {
                   Navigator.push(
                     context,

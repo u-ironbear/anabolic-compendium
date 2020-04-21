@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Article {
   Article({
     @required this.articleTitle,
+    @required this.articleTitleImage,
     this.articleSubtitle,
     this.articleAuthors,
     this.articleAbstract,
@@ -12,6 +13,7 @@ class Article {
   });
 
   final String articleTitle;
+  final Image articleTitleImage;
   final String articleSubtitle;
   final List<String> articleAuthors;
   final String articleAbstract;

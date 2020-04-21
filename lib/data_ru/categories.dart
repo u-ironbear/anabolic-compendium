@@ -18,7 +18,7 @@ final catDataRU = [
     ),
   ),
   Category(
-    dataSource: PEPTIDES_RU,
+    dataSource: peptidesRU,
     titlePrimary: 'Пептиды',
     catColor: Color(0xFFF05E37).withOpacity(0.8),
     catImage: Image.asset(
