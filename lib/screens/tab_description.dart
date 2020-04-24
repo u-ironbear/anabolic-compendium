@@ -23,8 +23,8 @@ class TabDescription extends StatelessWidget {
             listName: currentDrug.drugNameAliases,
           ),
           expoString(
-            title: 'Происхождение',
-            stringName: currentDrug.drugParent,
+            title: 'Принадлежность к группе',
+            stringName: currentDrug.drugGroup,
           ),
           expoString(
             title: 'Аналоги',

@@ -6,7 +6,7 @@ import 'package:anabolic_compendium/widgets/chat_button.dart';
 import 'package:anabolic_compendium/widgets/main_actions.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
-class DrugListScreen extends StatelessWidget {
+class DrugListScreen extends StatefulWidget {
   DrugListScreen({
     @required this.currentList,
     @required this.catTitle,
@@ -16,12 +16,18 @@ class DrugListScreen extends StatelessWidget {
   final List<DrugDescription> currentList;
   final String catTitle;
   final Image catImage;
+  IconData _trailingIcon = MdiIcons.bookmarkOutline;
 
+  @override
+  _DrugListScreenState createState() => _DrugListScreenState();
+}
+
+class _DrugListScreenState extends State<DrugListScreen> {
   @override
   Widget build(BuildContext context) {
     Comparator<DrugDescription> drugNameComparator =
         (a, b) => a.drugNameExact.compareTo(b.drugNameExact);
-    currentList.sort(drugNameComparator);
+    widget.currentList.sort(drugNameComparator);
 
     return Scaffold(
       body: CustomScrollView(
@@ -31,9 +37,9 @@ class DrugListScreen extends StatelessWidget {
             floating: false,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(catTitle),
+              title: Text(widget.catTitle),
               centerTitle: true,
-              background: catImage,
+              background: widget.catImage,
             ),
             actions: mainActions(
               context,
@@ -45,23 +51,28 @@ class DrugListScreen extends StatelessWidget {
             delegate: SliverChildBuilderDelegate(
               (context, index) => ListTile(
                 leading: Icon(
-                  currentList[index].drugIcon,
+                  widget.currentList[index].drugIcon,
                   color: Theme.of(context).accentColor,
                 ),
-                title: Text(currentList[index].drugNameExact),
-                trailing: Icon(MdiIcons.bookmarkOutline),
+                title: Text(widget.currentList[index].drugNameExact),
+                trailing: GestureDetector(
+                  child: Icon(widget._trailingIcon),
+                  onTap: () {
+                    setState(() {});
+                  },
+                ),
                 onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => DrugDetailsScreen(
-                        currentDrug: currentList[index],
+                        currentDrug: widget.currentList[index],
                       ),
                     ),
                   );
                 },
               ),
-              childCount: currentList.length,
+              childCount: widget.currentList.length,
             ),
           ),
         ],

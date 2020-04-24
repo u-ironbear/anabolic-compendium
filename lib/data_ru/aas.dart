@@ -3,7 +3,7 @@ import 'package:anabolic_compendium/models/drug_form_enum.dart';
 
 List<DrugDescription> aasListRU = [
   DrugDescription(
-    drugParent: 'Дигидротестостерон',
+    drugGroup: 'Производные дигидротестостерона',
     drugNameExact: '1-тестостерон',
     drugNameAliases: [
       '1-Testo',
@@ -16,7 +16,7 @@ List<DrugDescription> aasListRU = [
     drugRForm: DrugForm.pill,
     eliminationHalfLife: '4-6 часов',
     durationOfAction: 'До 24 часов',
-    drugUsageText: [
+    drugUsageSport: [
       'Объем мышц: применяется достаточно активно. По мощности сравним с метенолона энантатом (примоболаном) либо болденоном.',
       'Рост силовых показателей: может применяться. Повышение силовых показателей происходит, в основном, за счет повышения агрессивности.',
       'Повышение выносливости: используется редко. Тем не менее, находит применение в единоборствах — также за счет способности повышать агрессивность.',
@@ -61,7 +61,7 @@ List<DrugDescription> aasListRU = [
     realQuantity: 'Соответствует заявленному',
   ),
   DrugDescription(
-    drugParent: 'Дигидротестостерон',
+    drugGroup: 'Производные дигидротестостерона',
     drugNameExact: '1-тестостерона ципионат',
     drugNameAliases: [
       '1-Testo',
@@ -74,7 +74,7 @@ List<DrugDescription> aasListRU = [
     drugRForm: DrugForm.needle,
     eliminationHalfLife: '4-6 суток',
     durationOfAction: 'До 12 суток',
-    drugUsageText: [
+    drugUsageSport: [
       'Объем мышц: применяется достаточно активно. По мощности сравним с метенолона энантатом (примоболаном) либо болденоном.',
       'Рост силовых показателей: может применяться. Повышение силовых показателей происходит, в основном, за счет повышения агрессивности.',
       'Повышение выносливости: используется редко. Тем не менее, находит применение в единоборствах — также за счет способности повышать агрессивность.',

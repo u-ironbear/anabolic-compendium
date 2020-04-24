@@ -1,117 +1,72 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:anabolic_compendium/data_ru/categories.dart';
-import 'package:anabolic_compendium/widgets/chat_button.dart';
-import 'package:anabolic_compendium/widgets/main_actions.dart';
-import 'package:anabolic_compendium/widgets/category_card.dart';
-import 'package:anabolic_compendium/widgets/main_bottom_bar.dart';
+import 'package:anabolic_compendium/screens/drugs_list_screen.dart';
 
-class CategoriesScreen extends StatefulWidget {
-  @override
-  _CategoriesScreenState createState() => _CategoriesScreenState();
-}
-
-class _CategoriesScreenState extends State<CategoriesScreen> {
+class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Anabolic Compendium'),
-        centerTitle: true,
-        actions: mainActions(
-          context,
-          isSearch: true,
-          isFilter: false,
-        ),
-      ),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(
-                  top: 12,
-                  left: 15,
-                ),
-                child: Text(
-                  'Категории',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+    return Container(
+      margin: EdgeInsets.all(16),
+      child: ListView.builder(
+        itemBuilder: (context, index) => Container(
+          margin: EdgeInsets.all(6),
+          padding: EdgeInsets.only(
+            top: 8,
+            bottom: 8,
+          ),
+          height: 100,
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(
+              color: Colors.black26,
+              width: 0.2,
+              style: BorderStyle.solid,
             ),
-            Expanded(
-              flex: 5,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: CategoryCard(
-                      cardCategory: catDataRU[0],
-                    ),
-                  ),
-                  Expanded(
-                    child: CategoryCard(
-                      cardCategory: catDataRU[1],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 5,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: CategoryCard(
-                      cardCategory: catDataRU[2],
-                    ),
-                  ),
-                  Expanded(
-                    child: CategoryCard(
-                      cardCategory: catDataRU[3],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Container(
-                margin: EdgeInsets.only(
-                  top: 10,
-                  left: 10,
-                ),
-                child: Text(
-                  'Советы и подсказки',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 7,
-              child: Container(
-                margin: EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 10,
-                  bottom: 40,
-                ),
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
                 color: Colors.black12,
+                blurRadius: 6.0,
+                spreadRadius: 1.5,
+                offset: Offset(
+                  2.0,
+                  2.0,
+                ),
+              ),
+            ],
+          ),
+          child: ListTile(
+            leading: CircleAvatar(
+              radius: 50,
+              backgroundColor: catDataRU[index].catColor,
+              child: Text(
+                '30',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-          ],
+            title: Text(catDataRU[index].titlePrimary),
+            subtitle: Text(catDataRU[index].titleSecondary),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DrugListScreen(
+                    currentList: catDataRU[index].dataSource,
+                    catTitle: catDataRU[index].titlePrimary,
+                    catImage: catDataRU[index].catImage,
+                  ),
+                ),
+              );
+            },
+          ),
         ),
+        itemCount: catDataRU.length,
       ),
-      floatingActionButton: chatButton(context),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: MainBottomBar(),
     );
   }
 }

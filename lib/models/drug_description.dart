@@ -9,12 +9,10 @@ import 'package:anabolic_compendium/models/drug_form_enum.dart';
 /// Индикаторы и торговые марки перенесены в отдельные классы.
 class DrugDescription {
   const DrugDescription({
-    this.drugRatings,
-    this.ratioPriceEffectiveness,
     @required this.drugNameExact,
     @required this.drugRForm,
     @required this.drugNameAliases,
-    @required this.drugParent,
+    @required this.drugGroup,
     this.drugAnalogue = 'Нет',
     this.drugMetabolites = 'Нет данных',
     this.androgenicAnabolicRatio = 'Нет данных',
@@ -22,7 +20,7 @@ class DrugDescription {
     @required this.durationOfAction,
     @required this.keyChars,
     @required this.drugDescription,
-    @required this.drugUsageText,
+    @required this.drugUsageSport,
     @required this.drugPartners,
     @required this.drugRFormText,
     @required this.drugDosageText,
@@ -31,27 +29,14 @@ class DrugDescription {
     @required this.sideEffects,
     this.realQuantity,
     this.detectionTime = 'Нет данных',
+    this.isSelected = false,
   });
-
-  /// Рейтинги: нигде не отображаются; нужны для фильтров
-  // Рейтинги вводятся целыми числами:
-  //  0 = полное отсутствие
-  //  1 = слабый эффект
-  //  2 = эффект средней силы
-  //  3 = выраженный эффект
-  //  4 = очень сильный эффект
-  // Расположены в таком порядке: масса / сила / выносливость / подготовка
-  final List<int> drugRatings;
-
-  // Соотношение цена / эффективность также определяется по 5-бальной шкале.
-  // Отображается звездочками, так что, быть может, стоит числа заменить изображениями.
-  final int ratioPriceEffectiveness;
 
   /// Свойства, которые отображаются во вкладке «Описание»
   final String drugNameExact;
   final DrugForm drugRForm;
   final List<String> drugNameAliases;
-  final String drugParent;
+  final String drugGroup;
   final String drugAnalogue;
   final String drugMetabolites;
   final String androgenicAnabolicRatio;
@@ -76,8 +61,7 @@ class DrugDescription {
   // для силы
   // для выносливости
   // для предсоревновательной подготовки и «сжигания» жира
-  // для антивозрастной терапии
-  final List<String> drugUsageText;
+  final List<String> drugUsageSport;
   final List<String> drugPartners;
   final String drugRFormText;
   final List<String> drugDosageText;
@@ -94,6 +78,7 @@ class DrugDescription {
   // Время обнаружения: сказать, что оно лишь приблизительное;
   // пока решение о том, использовать этот параметр или нет, не принято
   final String detectionTime;
+  final bool isSelected;
 
   IconData get drugIcon => MdiIcons.fromString(describeEnum(drugRForm));
 }

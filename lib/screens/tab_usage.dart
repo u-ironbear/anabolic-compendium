@@ -20,7 +20,7 @@ class TabUsage extends StatelessWidget {
         children: <Widget>[
           expoList(
             title: 'Направления использования',
-            listName: currentDrug.drugUsageText,
+            listName: currentDrug.drugUsageSport,
           ),
           expoList(
             title: 'Оптимальные «партнеры»',
