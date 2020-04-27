@@ -6,53 +6,44 @@ import 'package:anabolic_compendium/models/drug_form_enum.dart';
 
 /// Класс предназначен для описательной части (вкладка «Описание»)
 /// и для части, отражающей использование (вкладка «Использование»).
-/// Индикаторы и торговые марки перенесены в отдельные классы.
-class DrugDescription {
-  const DrugDescription({
+/// Здесь же есть вспомогательные индикаторы.
+class DrugDescription with ChangeNotifier {
+  DrugDescription({
     @required this.drugNameExact,
     @required this.drugRForm,
     @required this.drugNameAliases,
     @required this.drugGroup,
-    this.drugAnalogue = 'Нет',
-    this.drugMetabolites = 'Нет данных',
-    this.androgenicAnabolicRatio = 'Нет данных',
+    @required this.drugAnalogue,
     @required this.eliminationHalfLife,
     @required this.durationOfAction,
-    @required this.keyChars,
+    @required this.drugKeyChars,
     @required this.drugDescription,
+    @required this.drugUsagePrescription,
     @required this.drugUsageSport,
-    @required this.drugPartners,
-    @required this.drugRFormText,
-    @required this.drugDosageText,
+    @required this.drugUsageWomen,
+    @required this.drugInteraction,
+    @required this.drugIntakeDosage,
+    @required this.drugSpecialConditions,
     @required this.drugCautions,
-    @required this.forWomen,
     @required this.sideEffects,
-    this.realQuantity,
-    this.detectionTime = 'Нет данных',
     this.isSelected = false,
+    this.drugRatings,
   });
 
   /// Свойства, которые отображаются во вкладке «Описание»
   final String drugNameExact;
   final DrugForm drugRForm;
+  // Дальше идут свойства, которые выводятся на экран Описание
   final List<String> drugNameAliases;
   final String drugGroup;
   final String drugAnalogue;
-  final String drugMetabolites;
-  final String androgenicAnabolicRatio;
-
-  // Период полувыведения указывается именно строкой,
-  // например, 7 часов или 4 дня. При этом нужно помнить,
-  // что свой период полувыведения есть и у чистого вещества,
-  // так, у нандролона он составляет 4,3 часа
   final String eliminationHalfLife;
 
   // Период активности - это несколько иное:
-  // у нандролона деканоата, например,
-  // период полувыведения составляет 6-12 дней,
-  // а период активности - 2-3 недели
+  // у нандролона деканоата, например, период полувыведения составляет
+  // 6-12 дней, а период активности - 2-3 недели
   final String durationOfAction;
-  final List<String> keyChars;
+  final List<String> drugKeyChars;
   final List<String> drugDescription;
 
   /// Свойства, которые отображаются во вкладке «Использование»
@@ -61,24 +52,32 @@ class DrugDescription {
   // для силы
   // для выносливости
   // для предсоревновательной подготовки и «сжигания» жира
+  final String drugUsagePrescription;
   final List<String> drugUsageSport;
-  final List<String> drugPartners;
-  final String drugRFormText;
-  final List<String> drugDosageText;
+  final String drugUsageWomen;
+  final List<String> drugInteraction;
+  final List<String> drugIntakeDosage;
+  final String drugSpecialConditions;
   final String drugCautions;
   final List<String> sideEffects;
-  final String forWomen;
-
-  // Реальное содержание действующего вещества в растворе,
-  // только для масляных растворов.
-  // Идет сразу после формы выпуска (текст),
-  // обозначается как Содержание в растворе
-  final String realQuantity;
-
-  // Время обнаружения: сказать, что оно лишь приблизительное;
-  // пока решение о том, использовать этот параметр или нет, не принято
-  final String detectionTime;
-  final bool isSelected;
 
   IconData get drugIcon => MdiIcons.fromString(describeEnum(drugRForm));
+
+  /// Индикаторы
+  bool isSelected;
+
+  void toggleSelectedStatus() {
+    isSelected = !isSelected;
+    notifyListeners();
+    // TODO: здесь же должно быть создание / открытие БД (JSON-файла) и запись препарата
+  }
+
+  // Рейтинги лежат в пределах от 0 до 5.
+  Map<String, int> drugRatings = {
+    'mass': 1,
+    'strength': 1,
+    'endurance': 1,
+    'fatburn': 1,
+    'price': 1,
+  };
 }

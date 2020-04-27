@@ -18,25 +18,29 @@ class TabUsage extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: <Widget>[
+          expoString(
+            title: 'Показания к применению',
+            stringName: currentDrug.drugUsagePrescription,
+          ),
           expoList(
-            title: 'Направления использования',
+            title: 'Применение в спорте',
             listName: currentDrug.drugUsageSport,
           ),
-          expoList(
-            title: 'Оптимальные «партнеры»',
-            listName: currentDrug.drugPartners,
-          ),
           expoString(
-            title: 'Форма выпуска',
-            stringName: currentDrug.drugRFormText,
-          ),
-          expoString(
-            title: 'Реальное содержание действующего вещества',
-            stringName: currentDrug.realQuantity,
+            title: 'Применение женщинами',
+            stringName: currentDrug.drugUsageWomen,
           ),
           expoList(
-            title: 'Дозировка',
-            listName: currentDrug.drugDosageText,
+            title: 'Сочетание с другими препаратами',
+            listName: currentDrug.drugInteraction,
+          ),
+          expoList(
+            title: 'Способ введения и дозы',
+            listName: currentDrug.drugIntakeDosage,
+          ),
+          expoString(
+            title: 'Особые условия',
+            stringName: currentDrug.drugSpecialConditions,
           ),
           expoString(
             title: 'Предостережения',
@@ -45,14 +49,6 @@ class TabUsage extends StatelessWidget {
           expoList(
             title: 'Побочные эффекты',
             listName: currentDrug.sideEffects,
-          ),
-          expoString(
-            title: 'Применение женщинами',
-            stringName: currentDrug.forWomen,
-          ),
-          expoString(
-            title: 'Срок обнаружения',
-            stringName: currentDrug.detectionTime,
           ),
         ],
       ),

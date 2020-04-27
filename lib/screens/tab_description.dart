@@ -27,16 +27,8 @@ class TabDescription extends StatelessWidget {
             stringName: currentDrug.drugGroup,
           ),
           expoString(
-            title: 'Аналоги',
+            title: 'Похожие по действию препараты',
             stringName: currentDrug.drugAnalogue,
-          ),
-          expoString(
-            title: 'Метаболиты',
-            stringName: currentDrug.drugMetabolites,
-          ),
-          expoString(
-            title: 'Активность',
-            stringName: currentDrug.androgenicAnabolicRatio,
           ),
           expoString(
             title: 'Период полувыведения',
@@ -47,12 +39,12 @@ class TabDescription extends StatelessWidget {
             stringName: currentDrug.durationOfAction,
           ),
           expoList(
-            title: 'Краткое описание',
-            listName: currentDrug.drugDescription,
+            title: 'Ключевые характеристики',
+            listName: currentDrug.drugKeyChars,
           ),
           expoList(
-            title: 'Ключевые характеристики',
-            listName: currentDrug.keyChars,
+            title: 'Краткое описание',
+            listName: currentDrug.drugDescription,
           ),
         ],
       ),

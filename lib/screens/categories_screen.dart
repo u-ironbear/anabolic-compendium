@@ -21,18 +21,18 @@ class CategoriesScreen extends StatelessWidget {
             color: Colors.white,
             border: Border.all(
               color: Colors.black26,
-              width: 0.2,
+              width: 0.1,
               style: BorderStyle.solid,
             ),
             borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: Colors.black12,
-                blurRadius: 6.0,
-                spreadRadius: 1.5,
+                blurRadius: 4.0,
+                spreadRadius: 0.5,
                 offset: Offset(
                   2.0,
-                  2.0,
+                  4.0,
                 ),
               ),
             ],

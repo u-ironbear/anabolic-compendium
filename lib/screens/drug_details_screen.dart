@@ -29,7 +29,7 @@ class DrugDetailsScreen extends StatelessWidget {
                 text: 'ПРИМЕНЕНИЕ',
               ),
               Tab(
-                text: 'ПРЕПАРАТЫ',
+                text: 'БРЕНДЫ',
               ),
             ],
           ),
